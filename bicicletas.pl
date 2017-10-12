@@ -10,8 +10,8 @@
 
 inicio:-preguntaMenu.
 
-preguntaMenu:-abrir, writeln('Bienvenido al sistema de recomendación de bicicletas'),
-	 writeln('Que desea hacer: 1-Solicitar una recomendación, 2-Informar una compra, 3-Salir'),read(R), menu(R).
+preguntaMenu:-abrir, writeln('Bienvenido al sistema de recomendaciÃ³n de bicicletas'),
+	 writeln('Que desea hacer: 1-Solicitar una recomendaciÃ³n, 2-Informar una compra, 3-Salir'),read(R), menu(R).
 
 menu(1):- info(X,L), nl,validaAtributos(L), validaBicicleta(X,L).
 menu(1):- writeln('No tenemos ninguna bicicleta adecuada para usted.'), preguntaMenu.
@@ -55,7 +55,8 @@ validaResp('n',X,_):- guardaNo(X), fail.
 
 writeBicicleta(X):- write('Codigo:'),writeln(X),tipo(X, T), writeln(T), origen(X, O), writeln(O), marca(X, MAR), writeln(MAR), modelo(X, MOD), writeln(MOD), rodado(X, R), writeln(R).
 
-abrir:- retractall(info(_,_)), retractall(si(_)), retractall(no(_)),
+abrir:- retractall(info(_,_)), retractall(si(_)), retractall(no(_)), retractall(modelo(_,_)), retractall(marca(_,_)), 
+	retractall(origen(_,_)), retractall(tipo(_,_)), retractall(rodado(_,_)),
 	consult("C:/TP4/bd_bicicletas.pl"),consult("C:/TP4/bd_modelo.pl"),consult("C:/TP4/bd_marca.pl"),consult("C:/TP4/bd_origen.pl")
         ,consult("C:/TP4/bd_tipo.pl"),consult("C:/TP4/bd_rodado"),consult("C:/TP4/bd_info").
 
