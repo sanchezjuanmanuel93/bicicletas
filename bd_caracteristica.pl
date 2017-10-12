@@ -1,3 +1,5 @@
+:-dynamic(caracteristica/2).
+
 caracteristica(1,'Menor a 5 años').
 caracteristica(2,'Entre 5 y 15 años').
 caracteristica(3,'Mayor a 15 años').
