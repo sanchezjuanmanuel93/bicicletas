@@ -10,8 +10,8 @@
 
 inicio:-preguntaMenu.
 
-preguntaMenu:-abrir, writeln('Bienvenido al sistema de recomendación de bicicletas'),
-	 writeln('Que desea hacer: 1-Solicitar una recomendación, 2-Informar una compra, 3-Salir'),read(R), menu(R).
+preguntaMenu:-abrir, writeln('Bienvenido al sistema de recomendaciÃ³n de bicicletas'),
+	 writeln('Que desea hacer: 1-Solicitar una recomendaciÃ³n, 2-Informar una compra, 3-Salir'),read(R), menu(R).
 
 menu(1):- info(X,L), nl,validaAtributos(L), validaBicicleta(X,L).
 menu(1):- writeln('No tenemos ninguna bicicleta adecuada para usted.'), preguntaMenu.
@@ -34,17 +34,17 @@ validaBicicleta(X,[H|T]):- validaProxPregunta(H,X),!, validaBicicleta(X,T).
 % Busca por cada uno de los atributos, si se respondio por si o por no.
 % Si encuentra el atributo en la lista de SI, debe buscar la proxima
 % pregunta,
-% Si encuentra el atributo en la lista de No, debe eliminar la bebida y
-% busca por la proxima bebida.
+% Si encuentra el atributo en la lista de No, debe eliminar la bicicleta y
+% busca por la proxima bicicleta.
 % Si no esta en ninguna de las dos, pregunta el atributo.
 validaProxPregunta(X,_):- si(X).
 %%validaProxPregunta(X,_):- no(X),!, fail.
 validaProxPregunta(X,B):- pregunta(X,B).
-%esta funcion hace la pregunta sobre una caracteristica de una bebida y devuelve true si la tiene y sino falla (faltaria completarla)
+%esta funcion hace la pregunta sobre una caracteristica de una bicicleta y devuelve true si la tiene y sino falla (faltaria completarla)
 
 pregunta(H,B):- caracteristica(H, D),write(D),writeln('?'),writeln('s/n h:Hipotesis'), read(R), validaResp(R,H,B).
 
-%ver como hacemos para q ocn R nos devuelva true o false dependiendo lo que conteste
+%ver como hacemos para que con R nos devuelva true o false dependiendo lo que conteste
 guardaSi(X):- asserta(si(X)). %Guarda un registro de si('atributo')
 guardaNo(X):- asserta(no(X)). %Guarda un registro de si('atributo')
 
