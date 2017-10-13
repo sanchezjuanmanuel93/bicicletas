@@ -2,10 +2,8 @@
 :-dynamic(info/2).
 :-dynamic(marca/2).
 :-dynamic(modelo/2).
-:-dynamic(no/1).
 :-dynamic(origen/2).
 :-dynamic(rodado/2).
-:-dynamic(si/1).
 :-dynamic(tipo/2).
 
 
@@ -56,8 +54,19 @@ validaResp('n',X,_):- guardaNo(X), fail.
 
 writeBicicleta(X):- write('Codigo:'),writeln(X),tipo(X, T), writeln(T), origen(X, O), writeln(O), marca(X, MAR), writeln(MAR), modelo(X, MOD), writeln(MOD), rodado(X, R), writeln(R).
 
-abrir:- retractall(info(_,_)), retractall(si(_)), retractall(no(_)), retractall(modelo(_,_)), retractall(marca(_,_)),
-	retractall(origen(_,_)), retractall(tipo(_,_)), retractall(rodado(_,_)),
-        consult("C:/TP4/bicicletas/bd_modelo.pl"),consult("C:/TP4/bicicletas/bd_marca.pl"),consult("C:/TP4/bicicletas/bd_origen.pl")
-        ,consult("C:/TP4/bicicletas/bd_tipo.pl"),consult("C:/TP4/bicicletas/bd_rodado"),consult("C:/TP4/bicicletas/bd_info").
+abrir:- retractall(caracteristica(_,_)),
+        retractall(marca(_,_)),
+        retractall(info(_,_)),
+        retractall(modelo(_,_)),
+        retractall(origen(_,_)),
+        retractall(rodado(_,_)),
+        retractall(tipo(_,_)),
+        consult("C:/TP4/bicicletas/bd_caracteristica.pl"),
+        consult("C:/TP4/bicicletas/bd_info"),
+        consult("C:/TP4/bicicletas/bd_marca.pl"),
+        consult("C:/TP4/bicicletas/bd_modelo.pl"),
+        consult("C:/TP4/bicicletas/bd_origen.pl"),
+        consult("C:/TP4/bicicletas/bd_rodado"),
+        consult("C:/TP4/bicicletas/bd_tipo.pl").
+
 
